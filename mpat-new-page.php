@@ -23,7 +23,7 @@ function wiztemplate()
 <html>
     <head>
         <title>New Page Wizard</title>
-
+<!--
 <link rel='stylesheet' id='dashicons-css' href='/wp/wp-includes/css/dashicons.css' type='text/css' media='all' />
 <link rel='stylesheet' id='admin-bar-css' href='/wp/wp-includes/css/admin-bar.css' type='text/css' media='all' />
 <link rel='stylesheet' id='mpo-css' href='/app/plugins/custom-post-order/css/mpo.css' type='text/css' media='all' />
@@ -45,19 +45,20 @@ function wiztemplate()
 <link rel='stylesheet' id='buttons-css' href='/wp/wp-includes/css/buttons.css' type='text/css' media='all' />
 <link rel='stylesheet' id='colors-css' href='/wp/wp-admin/css/colors/midnight/colors.css' type='text/css' media='all' />
 <link rel='stylesheet' id='admin-style' href='/app/plugins/mpat-plugins/css/admin_style.css' type='text/css' media='all' />
+-->
 <?php
 // var_dump(is_user_logged_in());
 // var_dump(wp_get_current_user());
             wp_enqueue_script( 'wp-api' );
-            wp_enqueue_style('mpat_admin', '/app/plugins/mpat-plugins/css/admin_style.css');
-           wp_register_script('mpat_admin', '/app/plugins/mpat-plugins/js/mpat_admin.min.js', array('wp-api'), 1.0, true );
+         //   wp_enqueue_style('mpat_admin', '/app/plugins/mpat-plugins/css/admin_style.css');
+     //      wp_register_script('mpat_admin', '/app/plugins/mpat-plugins/js/mpat_admin.min.js', array('wp-api'), 1.0, true );
            wp_head();
         ?>
     </head>
     <body>
     <h1>New Page Wizard</h1>
-    <button class="button button-primary" onClick="javascript:mnp.loadPages()">loadPages</button>
-    <button class="button button-primary" onClick="javascript:mnp.loadLayouts()">loadLayouts</button>
+    <button class="" onClick="javascript:mnp.loadPages()">loadPages</button>
+    <button class="" onClick="javascript:mnp.loadLayouts()">loadLayouts</button>
     <div id="wp-content">
     <p id="result"></p>
     <pre id="raw"><pre>
@@ -69,6 +70,7 @@ function wiztemplate()
 <script type="text/javascript" src="<?php echo plugin_dir_url(__FILE__); ?>rui.js" ></script>
 <script type="text/javascript">
 let mnp = new MpatNewPage();
+
 </script>
 
 </html>
