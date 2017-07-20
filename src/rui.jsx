@@ -1,10 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import LayoutIO from '../../LayoutIO';
-import ModelIO from '../../ModelIO';
-import PageIO from '../../PageIO';
+import CRUD from './crud';
 import { overlayConfirm, getButton, getInput, getEditPostUrl } from './tools.jsx';
-
 
 /**
 1 Choose if it's a PageModel (PM) or PageLayout (PL) you want to base your page upon
@@ -13,11 +10,15 @@ import { overlayConfirm, getButton, getInput, getEditPostUrl } from './tools.jsx
 3 Choose page title
   - when back, only newly created templates will be deleted
   - else go to page editor
+*/
 
- */
 class MpatNewPage extends React.PureComponent {
   constructor(props) {
     super(props);
+
+    this.modelIO = new CRUD(`${window.wpApiSettings.root}mpat/v1/model`);
+    this.layoutIO = new CRUD(`${window.wpApiSettings.root}mpat/v1/layout`);
+    this.pageIO = new CRUD(`${window.wpApiSettings.root}${window.wpApiSettings.versionString}pages`);
     // order and description of the steps
     this.flow = {
       base: 'New Page Wizard',
@@ -62,7 +63,7 @@ class MpatNewPage extends React.PureComponent {
 
   /** model */
   loadPageModels() {
-    ModelIO.getCommon().get(
+    this.modelIO.get(
       (result) => {
         const urls = [];
         for (const item of result) {
@@ -85,7 +86,7 @@ class MpatNewPage extends React.PureComponent {
 
   /** layout */
   loadPageLayouts() {
-    LayoutIO.getCommon().get(
+    this.layoutIO.get(
       (result) => {
         const urls = [];
         for (const item of result) {
@@ -126,13 +127,13 @@ class MpatNewPage extends React.PureComponent {
     }
   }
 
-  onInputNewModelName = event => this.setState({ newPageModelTitle: event.target.value });
-  onInputNewPageName = event => this.setState({ newPageTitle: event.target.value });
-  onInputNewLayoutName = event => this.setState({ newPageLayoutTitle: event.target.value });
+  onInputNewModelName(event) { return this.setState({ newPageModelTitle: event.target.value }); }
+  onInputNewPageName(event) { return this.setState({ newPageTitle: event.target.value }); }
+  onInputNewLayoutName(event) { return this.setState({ newPageLayoutTitle: event.target.value }); }
 
-  createNewLayout = () => {
+  createNewLayout() {
     console.log('createNewLayout');
-    LayoutIO.getCommon().post(
+    this.layoutIO.post(
       {
         post_type: 'page_layout',
         post_status: 'publish',
@@ -160,9 +161,9 @@ class MpatNewPage extends React.PureComponent {
       });
   };
 
-  createNewModel = () => {
+  createNewModel() {
     console.log('createNewModel');
-    ModelIO.getCommon().post(
+    this.modelIO.post(
       {
         post_type: 'page_model',
         post_status: 'publish',
@@ -190,9 +191,9 @@ class MpatNewPage extends React.PureComponent {
       });
   }
 
-  createNewPage = () => {
+  createNewPage() {
     console.log('createNewPage');
-    PageIO.getCommon().post(
+    this.pageIO.post(
       {
         type: 'page',
         status: 'publish',
@@ -284,7 +285,7 @@ class MpatNewPage extends React.PureComponent {
           case 'layout':
             if (this.state.newPageLayoutTitle != null) {
               // ...which you just created
-              LayoutIO.getCommon().remove(this.state.layoutId);
+              this.layoutIO.remove(this.state.layoutId);
             }
             this.setState({
               newPageLayoutTitle: null,
@@ -298,7 +299,7 @@ class MpatNewPage extends React.PureComponent {
             // you were interesed in a model...
             if (this.state.newPageModelTitle != null) {
               // ...which you just created
-              ModelIO.getCommon().remove(this.state.modelId);
+              this.modelIO.remove(this.state.modelId);
             }
             this.setState({
               newPageModelTitle: null,
@@ -474,7 +475,7 @@ class MpatNewPage extends React.PureComponent {
           {htmlSelect}
           {htmlInput}
         </div>
-        
+
         <div>
           {htmlBackButton}
           {htmlButtonValidate}
