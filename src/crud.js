@@ -8,47 +8,37 @@ export default class CRUD {
 
   get(onSuccess, onError) {
     axios.get(this.restRootUrl, {})
-        .then((v) => { onSuccess.call(null, v.data); })
-        .catch((e) => {
-          onError.call(null, e);
-          if (e.response) {
-            // The request was made, but the server responded with a status code
-            // that falls out of the range of 2xx
-            console.log('Error', e.response.status);
-            console.log(e.response.data.message);
-          } else {
-            // Something happened in setting up the request that triggered an
-            // Error
-            console.log('Error', e.message);
-          }
-        });
+      .then((v) => { onSuccess.call(null, v.data); })
+      .catch((e) => {
+        onError.call(null, e);
+        if (e.response) {
+          console.log('Error', e.response.status);
+          console.log(e.response.data.message);
+        } else {
+          console.log('Error', e.message);
+        }
+      });
   }
 
   remove(pageId, onSuccess, onError) {  // eslint-disable-line
     axios.delete(`${this.restRootUrl}/${pageId}`).then(onSuccess).catch((e) => {
       onError.call(null, e);
       if (e.response) {
-        // The request was made, but the server responded with a status code
-        // that falls out of the range of 2xx
         console.log('Error', e.response.status);
         console.log(e.response.data.message);
       } else {
-        // Something happened in setting up the request that triggered an Error
         console.log('Error', e.message);
       }
     });
   }
 
-  post(newPage, onSuccess, onError) {  // eslint-disable-line
+  post(newPage, onSuccess, onError) {
     axios.post(this.restRootUrl, newPage).then(onSuccess).catch((e) => {
       onError.call(null, e);
       if (e.response) {
-        // The request was made, but the server responded with a status code
-        // that falls out of the range of 2xx
         console.log('Error', e.response.status);
         console.log(e.response.data.message);
       } else {
-        // Something happened in setting up the request that triggered an Error
         console.log('Error', e.message);
       }
     });

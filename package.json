@@ -4,10 +4,8 @@
   "description": "Wizard for creating new pages for MPAT",
   "main": "webpack.config.js",
   "scripts": {
-    "babel": "babel --presets es2015 src/rui.jsx -o public/rui.jsnpm ",
     "build": "webpack --progress",
-    "dev": "webpack-dev-server --hot --inline --host 0.0.0.0 --port 8000",
-    "build-dev": "webpack -g --watch"
+    "build-dev": "webpack --watch"
   },
   "repository": {
     "type": "git",
