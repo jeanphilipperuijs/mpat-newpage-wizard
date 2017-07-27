@@ -2,14 +2,14 @@ import React from 'react';
 
 export const getId = () => Math.random().toString(36).substr(3, 5);
 
-export function onEnter(event, key = 13, cb) {
+export function onEnter(event, key, cb) {
   console.log(event.keyCode);
   if (event.keyCode === key) {
     cb(event);
   }
 }
 
-export const getEditPostUrl = id => `/wp/wp-admin/post.php?post=${Number(id)}&action=edit`;
+export const getEditPostUrl = id => `./post.php?post=${Number(id)}&action=edit`;
 
 export const getButton = (title, click, value = 'next') => (<button title={title} onKeyUp={e => onEnter(e, 78, click)} onClick={click} key={getId()} id={getId()} className="button blue_white" style={{ cursor: 'pointer', margin: '0.5em' }} type="button">{value}</button>);
 
