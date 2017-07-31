@@ -51,6 +51,11 @@ class MpatNewPage extends React.PureComponent {
     this.onInputNewModelName = this.onInputNewModelName.bind(this);
     this.onInputNewLayoutName = this.onInputNewLayoutName.bind(this);
     this.onInputNewPageName = this.onInputNewPageName.bind(this);
+
+    this.restUrlPage = `${window.wpApiSettings.root}${window.wpApiSettings.versionString}pages`;
+    this.restUrlPageLayout = `${window.wpApiSettings.root}mpat/v1/layout`; //custom rest
+    this.restUrlPageModel = `${window.wpApiSettings.root}mpat/v1/model`; //custom rest
+    this.isRestOk = true;
   }
 
   componentWillMount() {
@@ -59,9 +64,9 @@ class MpatNewPage extends React.PureComponent {
       this.setState({ errMsg: 'need WP API' });
     } else {
       //this.setState({ errMsg: 'Detected WP API' });
-      this.modelIO = new CRUD(`${window.wpApiSettings.root}mpat/v1/model`);
-      this.layoutIO = new CRUD(`${window.wpApiSettings.root}mpat/v1/layout`);
-      this.pageIO = new CRUD(`${window.wpApiSettings.root}${window.wpApiSettings.versionString}pages`);
+      this.modelIO = new CRUD(this.restUrlPageModel);
+      this.layoutIO = new CRUD(this.restUrlPageLayout);
+      this.pageIO = new CRUD(this.restUrlPage);
     }
   }
 
@@ -87,9 +92,16 @@ class MpatNewPage extends React.PureComponent {
         this.setState({ availableModels: urls, urlSelectDisabled: false });
       },
       (e) => {
-        this.setState({
-          errMsg: e
-        });
+        if (e.toString().indexOf('404') > -1) {
+          this.isRestOk = false;
+          this.setState({
+            errMsg: `Missing the custom REST for Page Models ${this.restUrlPageModel}. Have you installed "mpat-core-plugin" ?`
+          });
+        } else {
+          this.setState({
+            errMsg: `${this.restUrlPageModel} gave ${e.toString()}`
+          });
+        }
       });
   }
 
@@ -110,9 +122,17 @@ class MpatNewPage extends React.PureComponent {
         this.setState({ availableLayouts: urls, urlSelectDisabled: false });
       },
       (e) => {
-        this.setState({
-          errMsg: e
-        });
+        if (e.toString().indexOf('404') > -1) {
+          this.isRestOk = false;
+
+          this.setState({
+            errMsg: `Missing the custom REST for Page Layouts ${this.restUrlPageLayout}. Have you installed "mpat-core-plugin" ?`
+          });
+        } else {
+          this.setState({
+            errMsg: `${this.restUrlPageLayout} gave ${e.toString()}`
+          });
+        }
       });
   }
 
@@ -473,14 +493,9 @@ class MpatNewPage extends React.PureComponent {
     if (this.state.child !== null && !this.state.child.closed) {
       stepLabel = (<span>Editing {this.state.workFlow} in external window</span>);
     }
-
-    return (<div className="mpat">
-      <div>
-        <h3>{this.flow[this.state.stepTag.toLowerCase()]}</h3>
-        <h4>{stepLabel}</h4>
-        <strong>{this.state.errMsg}</strong>
-      </div>
-      <div>
+    let ui = null;
+    if (this.isRestOk) {
+      ui = (<div>
         <div>
           {htmlSelect}
           {htmlInput}
@@ -490,7 +505,15 @@ class MpatNewPage extends React.PureComponent {
           {htmlBackButton}
           {htmlButtonValidate}
         </div>
+      </div>);
+    }
+    return (<div className="mpat">
+      <div>
+        <h2>{this.flow[this.state.stepTag.toLowerCase()]}</h2>
+        <h3>{stepLabel}</h3>
+        <h1>{this.state.errMsg}</h1>
       </div>
+      {ui}
       {this.state.modal}
     </div>);
   }
