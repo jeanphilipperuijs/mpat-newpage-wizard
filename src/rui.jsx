@@ -16,9 +16,6 @@ class MpatNewPage extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    this.modelIO = new CRUD(`${window.wpApiSettings.root}mpat/v1/model`);
-    this.layoutIO = new CRUD(`${window.wpApiSettings.root}mpat/v1/layout`);
-    this.pageIO = new CRUD(`${window.wpApiSettings.root}${window.wpApiSettings.versionString}pages`);
     // order and description of the steps
     this.flow = {
       base: 'New Page Wizard',
@@ -43,6 +40,7 @@ class MpatNewPage extends React.PureComponent {
       child: null
     };
 
+
     this.goBack = this.goBack.bind(this);
     this.waitForChildEdited = this.waitForChildEdited.bind(this);
     this.onSelectModelOrLayout = this.onSelectModelOrLayout.bind(this);
@@ -53,6 +51,18 @@ class MpatNewPage extends React.PureComponent {
     this.onInputNewModelName = this.onInputNewModelName.bind(this);
     this.onInputNewLayoutName = this.onInputNewLayoutName.bind(this);
     this.onInputNewPageName = this.onInputNewPageName.bind(this);
+  }
+
+  componentWillMount() {
+    if (wpApiSettings === undefined) {
+      alert('wpApiSettings object not found!');
+      this.setState({ errMsg: 'need WP API' });
+    } else {
+      //this.setState({ errMsg: 'Detected WP API' });
+      this.modelIO = new CRUD(`${window.wpApiSettings.root}mpat/v1/model`);
+      this.layoutIO = new CRUD(`${window.wpApiSettings.root}mpat/v1/layout`);
+      this.pageIO = new CRUD(`${window.wpApiSettings.root}${window.wpApiSettings.versionString}pages`);
+    }
   }
 
   componentDidMount() {
