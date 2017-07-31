@@ -506,7 +506,7 @@ class MpatNewPage extends React.PureComponent {
           {htmlButtonValidate}
         </div>
       </div>);
-    }
+    } else { stepLabel = null; }
     return (<div className="mpat">
       <div>
         <h2>{this.flow[this.state.stepTag.toLowerCase()]}</h2>
