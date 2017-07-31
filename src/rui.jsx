@@ -24,20 +24,21 @@ class MpatNewPage extends React.PureComponent {
     };
     // things that change
     this.state = {
-      stepTag: 'base',
-      workFlow: null,
-      errMsg: null,
+      stepTag: 'base', // to determine the position in the workflow
+      workFlow: null, // to determine the way/direction of the workflow
+      errMsg: null, // if any error message
 
-      layoutId: null,
-      availableLayouts: [],
-      newPageLayoutTitle: null,
+      layoutId: null, // layout id
+      availableLayouts: [], // where the layouts are put after load
+      newPageLayoutTitle: null, // for input title when creating new layout
 
-      modelId: null,
-      availableModels: [],
-      newPageModelTitle: null,
+      modelId: null, //model id
+      availableModels: [], //where the models are put after load
+      newPageModelTitle: null, // input title when creating new page model
 
-      postParent: 0,
-      child: null
+      postParent: 0, //if the post has a parent (currently unchanged)
+      
+      child: null // when editing in another window
     };
 
 
@@ -52,9 +53,10 @@ class MpatNewPage extends React.PureComponent {
     this.onInputNewLayoutName = this.onInputNewLayoutName.bind(this);
     this.onInputNewPageName = this.onInputNewPageName.bind(this);
 
-    this.restUrlPage = `${window.wpApiSettings.root}${window.wpApiSettings.versionString}pages`;
-    this.restUrlPageLayout = `${window.wpApiSettings.root}mpat/v1/layout`; //custom rest
-    this.restUrlPageModel = `${window.wpApiSettings.root}mpat/v1/model`; //custom rest
+    //WP REST API
+    this.restUrlPage = `${window.wpApiSettings.root}${window.wpApiSettings.versionString}pages`; //default REST
+    this.restUrlPageLayout = `${window.wpApiSettings.root}mpat/v1/layout`; //custom REST
+    this.restUrlPageModel = `${window.wpApiSettings.root}mpat/v1/model`; //custom REST
     this.isRestOk = true;
   }
 
@@ -493,6 +495,8 @@ class MpatNewPage extends React.PureComponent {
     if (this.state.child !== null && !this.state.child.closed) {
       stepLabel = (<span>Editing {this.state.workFlow} in external window</span>);
     }
+
+    //if custom rest available => show the rest of the interface
     let ui = null;
     if (this.isRestOk) {
       ui = (<div>
@@ -506,7 +510,10 @@ class MpatNewPage extends React.PureComponent {
           {htmlButtonValidate}
         </div>
       </div>);
-    } else { stepLabel = null; }
+    } else {
+      stepLabel = null;
+    }
+
     return (<div className="mpat">
       <div>
         <h2>{this.flow[this.state.stepTag.toLowerCase()]}</h2>
