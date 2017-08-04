@@ -1,7 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import CRUD from './crud';
+import i18n from './i18n';
+
 import { overlayConfirm, getButton, getInput, getEditPostUrl } from './tools.jsx';
+
 
 /**
 1 Choose if it's a PageModel (PM) or PageLayout (PL) you want to base your page upon
@@ -17,11 +20,12 @@ class MpatNewPage extends React.PureComponent {
     super(props);
 
     // order and description of the steps
-    this.flow = {
-      base: 'New Page Wizard',
-      layout: 'Layout',
-      model: 'Model'
-    };
+    /*  this.flow = {
+        base: i18n.flow.base,
+        layout: i18n.flow.layout,
+        model: i18n.flow.model
+      };*/
+
     // things that change
     this.state = {
       stepTag: 'base', // to determine the position in the workflow
@@ -37,7 +41,7 @@ class MpatNewPage extends React.PureComponent {
       newPageModelTitle: null, // input title when creating new page model
 
       postParent: 0, //if the post has a parent (currently unchanged)
-      
+
       child: null // when editing in another window
     };
 
@@ -94,6 +98,7 @@ class MpatNewPage extends React.PureComponent {
         this.setState({ availableModels: urls, urlSelectDisabled: false });
       },
       (e) => {
+        //console.log('loadPageModels', e);
         if (e.toString().indexOf('404') > -1) {
           this.isRestOk = false;
           this.setState({
@@ -124,9 +129,9 @@ class MpatNewPage extends React.PureComponent {
         this.setState({ availableLayouts: urls, urlSelectDisabled: false });
       },
       (e) => {
+        //console.log('loadPageLayouts', e);
         if (e.toString().indexOf('404') > -1) {
           this.isRestOk = false;
-
           this.setState({
             errMsg: `Missing the custom REST for Page Layouts ${this.restUrlPageLayout}. Have you installed "mpat-core-plugin" ?`
           });
@@ -140,6 +145,7 @@ class MpatNewPage extends React.PureComponent {
 
   /** first step/selection of pagelayout/pagemodel */
   onSelectModelOrLayout(event) {
+
     switch (event.target.value) {
       case 'layout':
         this.setState({
@@ -164,7 +170,7 @@ class MpatNewPage extends React.PureComponent {
   onInputNewLayoutName(event) { return this.setState({ newPageLayoutTitle: event.target.value }); }
 
   createNewLayout() {
-    console.log('createNewLayout');
+    //console.log('createNewLayout');
     this.layoutIO.post(
       {
         post_type: 'page_layout',
@@ -194,7 +200,7 @@ class MpatNewPage extends React.PureComponent {
   };
 
   createNewModel() {
-    console.log('createNewModel');
+    //console.log('createNewModel');
     this.modelIO.post(
       {
         post_type: 'page_model',
@@ -224,7 +230,7 @@ class MpatNewPage extends React.PureComponent {
   }
 
   createNewPage() {
-    console.log('createNewPage');
+    //console.log('createNewPage');
     this.pageIO.post(
       {
         type: 'page',
@@ -252,7 +258,7 @@ class MpatNewPage extends React.PureComponent {
   }
 
   waitForChildEdited(title, id) {
-    const msgStr = `Edit "${title}" ?`;
+    const msgStr = i18n.formatString(i18n.modal.edit, title);
 
     const confirmCB = () => {
       const openedChild = window.open(getEditPostUrl(id));
@@ -264,7 +270,7 @@ class MpatNewPage extends React.PureComponent {
           });
           clearInterval(this.childTimer);
         }
-      }, 500);
+      }, 250);
       const inner = (<div>
         <h3>Editing {title} in other window...</h3>
         <small>If pop-up blocked try <a target="_manualOpen" onClick={() => { this.setState({ child: null }); }} href={getEditPostUrl(id)}>manually</a> opening in another window</small>
@@ -401,43 +407,54 @@ class MpatNewPage extends React.PureComponent {
     let htmlSelect = null;
 
     if (this.state.stepTag !== 'base') {
-      htmlBackButton = getButton('Back to previous', this.goBack, 'back');
+      htmlBackButton = getButton(i18n.stepLabel.back, this.goBack, i18n.stepButton.back);
     }
+
+    let inputPlaceholder = '';
+    inputPlaceholder = i18n.formatString(i18n.inputNew, i18n.flow[this.state.stepTag]);
 
     switch (this.state.stepTag) {
       // First step
       case 'base':
-        stepLabel = 'Should your new page be based on a layout or model?';
+        stepLabel = i18n.formatString(i18n.stepLabel.base, i18n.flow.layout, i18n.flow.model);
         htmlSelect = (<span className="content-editor-container">
           <select onChange={this.onSelectModelOrLayout}>
-            <option>choose...</option>
-            <option value="layout">Layout</option>
-            <option value="model">Model</option>
+            <option>{i18n.optionChoose}...</option>
+            <option value="layout">{i18n.flow.layout}</option>
+            <option value="model">{i18n.flow.model}</option>
           </select>
         </span>);
         break;
 
       // choose (or create) a new model for your page
       case 'model':
-        stepLabel = this.state.availableModels.length > 0 ? 'Choose or create a "Page Model"' : 'Create a Page Model';
+        stepLabel = this.state.availableModels.length > 0 ? i18n.formatString(i18n.stepLabel.chooseCreate, i18n.flow.model) : i18n.formatString(i18n.stepLabel.createNew, i18n.flow.model);
         htmlSelect = this.getHtmlSelect(this.state.availableModels, 'model');
 
-        htmlInput = getInput('inputModel', this.onInputNewModelName, '[new model name]');
+        htmlInput = getInput('inputModel', this.onInputNewModelName, inputPlaceholder);
         // if a title has been typed => show create button
+
         if (this.state.newPageModelTitle !== null && this.state.newPageModelTitle.length > 0) {
-          htmlButtonValidate = getButton(`Create new model ${this.state.newPageModelTitle}`, this.createModel, 'create new model');
+          htmlButtonValidate = getButton(
+            i18n.formatString(i18n.stepLabel.createNew, this.state.newPageModelTitle),
+            this.createModel,
+            i18n.formatString(i18n.stepLabel.createNew, i18n.flow.model));
         }
         break;
 
       // choose (or create) a new layout for your page
       case 'layout':
-        stepLabel = this.state.availableLayouts.length > 0 ? 'Choose or create a "Page Layout"' : 'Create a Page Layout';
+        stepLabel = this.state.availableLayouts.length > 0 ? i18n.formatString(i18n.stepLabel.chooseCreate, i18n.flow.layout) : i18n.formatString(i18n.stepLabel.createNew, i18n.flow.layout);// 'Choose or create a "Page Layout"' : 'Create a Page Layout';
         htmlSelect = this.getHtmlSelect(this.state.availableLayouts, 'layout');
 
-        htmlInput = getInput('inputlayout', this.onInputNewLayoutName, '[new layout name]');
+        htmlInput = getInput('inputlayout', this.onInputNewLayoutName, inputPlaceholder);
         // if a title has been typed => show create button
         if (this.state.newPageLayoutTitle !== null && this.state.newPageLayoutTitle.length > 0) {
-          htmlButtonValidate = getButton(`Create new layout ${this.state.newPageLayoutTitle}`, this.createLayout, 'creat new layout');
+          //htmlButtonValidate = getButton(`Create new layout ${this.state.newPageLayoutTitle}`, this.createLayout, 'creat new layout');
+          htmlButtonValidate = getButton(
+            i18n.formatString(i18n.stepLabel.createNew, this.state.newPageLayoutTitle),
+            this.createLayout,
+            i18n.formatString(i18n.stepLabel.createNew, i18n.flow.layout));
         }
         break;
 
@@ -477,15 +494,19 @@ class MpatNewPage extends React.PureComponent {
             break;
         }
 
-        htmlInput = getInput('inputpage', this.onInputNewPageName, '[new page name]');
-        htmlButtonValidate = getButton(`Create new page ${this.state.newPageTitle}`, this.createPage, 'create & edit');
+        htmlInput = getInput('inputpage', this.onInputNewPageName, inputPlaceholder);
+        htmlButtonValidate = getButton(
+          i18n.formatString(i18n.stepLabel.createNew, this.state.newPageTitle),
+          this.createPage,
+          i18n.createEdit);
 
-        const typeOfPage = this.state.workFlow === 'layout' ? 'PageLayout' : 'PageModel';
-        stepLabel = `Choose a title for the page based on ${typeOfPage} '${label}'`;
+        const typeOfPage = this.state.workFlow === 'layout' ? i18n.pageType.layout : i18n.pageType.model;
+        //stepLabel = `Choose a title for the page based on ${typeOfPage} '${label}'`;
+        stepLabel = i18n.formatString(i18n.insertTitle, typeOfPage, label);
         break;
 
       case 'done':
-        stepLabel = 'Done';
+        stepLabel = i18n.stepLabel.done;
         break;
 
       default:
@@ -514,10 +535,13 @@ class MpatNewPage extends React.PureComponent {
       stepLabel = null;
     }
 
+    let st = this.state.stepTag.toLowerCase();
+    let flow = i18n.flow[st];
+    //console.log(st, flow, i18n.getLanguage());//, i18n.getInterfaceLanguage());
     return (<div className="mpat">
       <div>
-        <h2>{this.flow[this.state.stepTag.toLowerCase()]}</h2>
-        <h3>{stepLabel}</h3>
+        <h3>{flow}</h3>
+        <h4>{stepLabel}</h4>
         <h1>{this.state.errMsg}</h1>
       </div>
       {ui}

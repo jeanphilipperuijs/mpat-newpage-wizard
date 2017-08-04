@@ -8,7 +8,9 @@ export default class CRUD {
 
   get(onSuccess, onError) {
     axios.get(this.restRootUrl, {})
-      .then((v) => { onSuccess.call(null, v.data); })
+      .then((v) => {
+        onSuccess.call(null, v.data);
+      })
       .catch((e) => {
         onError.call(null, e);
         if (e.response) {
@@ -20,7 +22,7 @@ export default class CRUD {
       });
   }
 
-  remove(pageId, onSuccess, onError) {  // eslint-disable-line
+  remove(pageId, onSuccess, onError) {
     axios.delete(`${this.restRootUrl}/${pageId}`).then(onSuccess).catch((e) => {
       onError.call(null, e);
       if (e.response) {
