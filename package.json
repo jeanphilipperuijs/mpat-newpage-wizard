@@ -7,7 +7,7 @@
     "build": "webpack --progress",
     "build-dev": "NODE_ENV=dev webpack --progress --watch",
     "dev": "NODE_ENV=dev webpack-dev-server --content-base react_src --host 0.0.0.0 --port 8000"
-   },
+  },
   "repository": {
     "type": "git",
     "url": "git@github.com:jeanphilipperuijs/mpat-newpage-wizard.git"

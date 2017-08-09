@@ -292,8 +292,7 @@ class MpatNewPage extends React.PureComponent {
   }
   /**
    * The 'go back' button.
-   * This also, if it's the case, delete newly created model/layout.
-   **/
+   */
   goBack() {
     switch (this.state.stepTag) {
 
@@ -407,7 +406,7 @@ class MpatNewPage extends React.PureComponent {
     let htmlSelect = null;
 
     if (this.state.stepTag !== 'base') {
-      htmlBackButton = getButton(i18n.stepLabel.back, this.goBack, i18n.stepButton.back);
+      htmlBackButton = getButton(i18n.stepLabel.back, this.goBack,this.state.stepTag !== 'done'? i18n.stepButton.back: i18n.stepButton.done);
     }
 
     let inputPlaceholder = '';
@@ -538,6 +537,7 @@ class MpatNewPage extends React.PureComponent {
     let st = this.state.stepTag.toLowerCase();
     let flow = i18n.flow[st];
     //console.log(st, flow, i18n.getLanguage());//, i18n.getInterfaceLanguage());
+    //console.log('state', this.state);
     return (<div className="mpat">
       <div>
         <h3>{flow}</h3>
