@@ -542,7 +542,7 @@ class MpatNewPage extends React.PureComponent {
       <div>
         <h3>{flow}</h3>
         <h4>{stepLabel}</h4>
-        <h1>{this.state.errMsg}</h1>
+        <strong>{this.state.errMsg}</strong>
       </div>
       {ui}
       {this.state.modal}
