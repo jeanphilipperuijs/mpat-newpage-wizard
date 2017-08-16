@@ -171,7 +171,7 @@ try {
     }
   }
   catch (err) {
-    console.log(err);
+    //console.log(err);
   }
   /*
   in case we have a i18n querystring, we override this
@@ -184,7 +184,7 @@ try {
       i18n.setLanguage(j);
     }
   } catch (err) {
-    console.log(err);
+    //console.log(err);
   }
   console.log('Using locale: ' + i18n.getLanguage());
   module.exports = i18n;

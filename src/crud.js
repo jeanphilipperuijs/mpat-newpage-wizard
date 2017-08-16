@@ -9,7 +9,17 @@ export default class CRUD {
   get(onSuccess, onError) {
     axios.get(this.restRootUrl, {})
       .then((v) => {
-        onSuccess.call(null, v.data);
+        // because there may be irrelevant wordpress errors we strip them
+        let w = v.data;
+        if (v.data.indexOf('>') > -1) {
+          let li = v.data.lastIndexOf('>');
+          w = v.data.substr(li + 1);
+        }
+        if (typeof w === 'string') {
+          w = JSON.parse(w);
+        }
+        console.log(this.restRootUrl, 'data', w);
+        onSuccess.call(null, w);
       })
       .catch((e) => {
         onError.call(null, e);
