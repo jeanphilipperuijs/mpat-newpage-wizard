@@ -18,7 +18,7 @@ export default class CRUD {
         if (typeof w === 'string') {
           w = JSON.parse(w);
         }
-        console.log(this.restRootUrl, 'data', w);
+        //console.log(this.restRootUrl, 'data', w);
         onSuccess.call(null, w);
       })
       .catch((e) => {
