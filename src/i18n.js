@@ -159,13 +159,33 @@ const i18n = new LocalizedStrings({
     }
 });
 
+
+/*
+first try to get the 'get_user_locale()' from javascript object  'mpati18n'
+app_language is prior set by get_option. If not existing it returns get_user_locale() value
+*/
 try {
+    if (mpati18n !== undefined) {
+      i18n.setLanguage(mpati18n.lang);
+      console.log('set i18n from app_langauge value');
+    }
+  }
+  catch (err) {
+    console.log(err);
+  }
+  /*
+  in case we have a i18n querystring, we override this
+  */
+  try {
     const i = document.location.search.split('i18n=');
     if (i.length > 1) {
-        const j = i[1].split("&")[0];
-        console.log('Forcing language:', j);
-        i18n.setLanguage(j);
+      const j = i[1].split('&')[0];
+      console.log('Forcing locale');
+      i18n.setLanguage(j);
     }
-} catch (err)
-{ console.log(err); }
-module.exports = i18n;
+  } catch (err) {
+    console.log(err);
+  }
+  console.log('Using locale: ' + i18n.getLanguage());
+  module.exports = i18n;
+  
