@@ -156,22 +156,56 @@ const i18n = new LocalizedStrings({
         inputNew: '[{0} kuten]',
         optionChoose: 'kohdassa',
         insertTitle: 'Valitse otsikko {0} "{1}"',
+    },
+    nl: {
+        flow: {
+            base: 'Nieuwe Pagina Page Assistent',
+            layout: 'Opmaak',
+            model: 'Model',
+            page: 'Pagina'
+        },
+        pageType: { layout: 'Pagina Opmaak', model: 'Pagina Model' },
+        stepLabel: {
+            base: 'Moet uw nieuwe pagina gebaseerd zijn op een {0} of {1}?',
+            chooseCreate: 'Kies of maak een {0}',
+            createNew: 'Maak een nieuwe {0}',
+            back: 'Terug naar vorige'
+        },
+        stepButton: {
+            createPage: 'Maak en bewerk',
+            done: 'Maak een andere aan',
+            next: 'volgende',
+            back: 'terug'
+        },
+        modal: {
+            yes: 'Ja',
+            no: 'Nee',
+            cancel: 'Annuleer',
+            confirm: 'Bevestig',
+            edit: `Voordat u verder gaat naar de volgende stap, wilt u "{0}" aanpassen?`
+        },
+        inputNew: '[{0} titel]',
+        optionChoose: 'kies',
+        insertTitle: 'Kies een titel voor {0} "{1}"',
     }
 });
 
 
 /*
-first try to get the 'get_user_locale()' from javascript object  'mpati18n'
+first try to get the 'get_user_locale()' from javascript object  'npwi18n'
 app_language is prior set by get_option. If not existing it returns get_user_locale() value
 */
 try {
-    if (mpati18n !== undefined) {
-      i18n.setLanguage(mpati18n.lang);
-      console.log('set i18n from app_langauge value');
+    if (npwi18n !== undefined) {
+      i18n.setLanguage(npwi18n.lang);
+      console.log(`set "${npwi18n.lang}" from get_user_locale value`);
+      console.log('mpat-newpage-wizard is using locale: ' + i18n.getLanguage());
+    } else {
+      console.log('npwi18n not defined');
     }
   }
   catch (err) {
-    //console.log(err);
+    console.log(err);
   }
   /*
   in case we have a i18n querystring, we override this
@@ -180,12 +214,12 @@ try {
     const i = document.location.search.split('i18n=');
     if (i.length > 1) {
       const j = i[1].split('&')[0];
-      console.log('Forcing locale');
+      console.log(`Forcing locale ${j} by querystring`);
       i18n.setLanguage(j);
-    }
+      console.log('mpat-newpage-wizard is using locale: ' + i18n.getLanguage());   }
   } catch (err) {
-    //console.log(err);
+    console.log(err);
   }
-  console.log('Using locale: ' + i18n.getLanguage());
+ 
   module.exports = i18n;
   

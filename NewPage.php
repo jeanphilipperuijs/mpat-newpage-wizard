@@ -34,6 +34,12 @@ class NewPage
     function js()
     {
         wp_enqueue_script('wp-api');
+        wp_register_script('mpat_npw_i18n', null, array("wp-api"));
+        wp_localize_script('mpat_npw_i18n', 'npwi18n', array(
+            'lang' => substr(get_user_locale(), 0, 2),
+            'locale' => get_user_locale()
+        ));
+        wp_enqueue_script('mpat_npw_i18n');
         wp_enqueue_script('mpat-newpage-wizard', plugin_dir_url(__FILE__) . 'public/rui.js', array('wp-api'), 1.0, true );
     }
 }
