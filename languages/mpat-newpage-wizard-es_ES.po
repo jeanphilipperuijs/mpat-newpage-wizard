@@ -9,9 +9,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-08-24 14:02+0200\n"
+"PO-Revision-Date: 2017-08-24 19:54+0200\n"
 "Language-Team: \n"
-"X-Generator: Poedit 2.0.3\n"
+"X-Generator: Poedit 1.8.11\n"
 "Last-Translator: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: es_ES\n"
@@ -26,7 +26,7 @@ msgstr "Editor de páginas nuevas"
 
 #. Plugin Name of the plugin/theme
 msgid "MPAT New Page Wizard"
-msgstr "MPAT Asistente para nueva página"
+msgstr "MPAT Asistente de página "
 
 #. Plugin URI of the plugin/theme
 msgid "https://github.com/jeanphilipperuijs/mpat-newpage-wizard/"
