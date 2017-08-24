@@ -159,7 +159,7 @@ const i18n = new LocalizedStrings({
     },
     nl: {
         flow: {
-            base: 'Nieuwe Pagina Page Assistent',
+            base: 'Nieuwe Pagina Assistent',
             layout: 'Opmaak',
             model: 'Model',
             page: 'Pagina'
