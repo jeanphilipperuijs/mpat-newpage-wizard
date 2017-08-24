@@ -3,7 +3,7 @@
  * Plugin Name: MPAT New Page Wizard
  * Plugin URI: https://github.com/jeanphilipperuijs/mpat-newpage-wizard/
  * Description: Wizard for creating new pages for MPAT
- * Version: 2.0.beta
+ * Version: 2.0.2
  * Author: Jean-Philippe Ruijs
  * Author URI: https://github.com/jeanphilipperuijs/
  * License: GPL2
