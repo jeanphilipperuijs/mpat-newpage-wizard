@@ -406,7 +406,7 @@ class MpatNewPage extends React.PureComponent {
     let htmlSelect = null;
 
     if (this.state.stepTag !== 'base') {
-      htmlBackButton = getButton(i18n.stepLabel.back, this.goBack,this.state.stepTag !== 'done'? i18n.stepButton.back: i18n.stepButton.done);
+      htmlBackButton = getButton(i18n.stepLabel.back, this.goBack, this.state.stepTag !== 'done' ? i18n.stepButton.back : i18n.stepButton.done);
     }
 
     let inputPlaceholder = '';
