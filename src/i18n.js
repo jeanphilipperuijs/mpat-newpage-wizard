@@ -27,7 +27,7 @@ const i18n = new LocalizedStrings({
             no: 'No',
             cancel: 'Cancel',
             confirm: 'Confirm',
-            edit: `Before continuing to the next step, would you like to modify "{0}" ?`
+            edit: `Before continuing to the next step, would you like to modify {0} ?`
         },
         inputNew: '[{0} title]',
         optionChoose: 'choose',
@@ -36,15 +36,15 @@ const i18n = new LocalizedStrings({
     fr: {
         flow: {
             base: 'Assistant création de page',
-            layout: 'Schéma',
+            layout: 'Mise en page',
             model: 'Modèle',
             page: 'Page'
         },
         pageType: { layout: 'PageLayout', model: 'PageModel' },
         stepLabel: {
-            base: 'Voulez vous baser votre nouvelle page depuis un {0} ou {1}?',
-            chooseCreate: 'Choix ou création d\'un(e) "{0}"',
-            createNew: 'Création d\'un(e) "{0}"',
+            base: 'Souhaitez-vous créer une page à partir d\'une {0} ou d\'un {1}?',
+            chooseCreate: 'Choix ou création de {0}',
+            createNew: 'Création de {0}',
             back: 'Retour d\'une étape'
         },
         stepButton: {
@@ -58,11 +58,11 @@ const i18n = new LocalizedStrings({
             no: 'Non',
             cancel: 'Annuler',
             confirm: 'Confirmer',
-            edit: `Avant de continuer à la prochaine étape, voulez-vous modifier "{0}" ?`
+            edit: `Avant de continuer à la prochaine étape, voulez-vous modifier <strong>{0}</strong> ?`
         },
         inputNew: '[titre de {0}]',
         optionChoose: 'choisissez',
-        insertTitle: `Choisissez un titre pour {0} "{1}"`,
+        insertTitle: `Saisissez un titre pour {0} "{1}"`,
     },
     de: {
         flow: {
@@ -74,8 +74,8 @@ const i18n = new LocalizedStrings({
         pageType: { layout: 'PageLayout', model: 'PageModel' },
         stepLabel: {
             base: 'Wollen Sie Ihre neue Seite von {0} oder {1} gründen?',
-            chooseCreate: 'Wahl oder die Schaffung von ein (e) "{0}"',
-            createNew: 'Ein "{0}" kreieren',
+            chooseCreate: 'Wahl oder die Schaffung von ein (e) {0}',
+            createNew: 'Ein {0} kreieren',
             back: 'Zurück einen Schritt'
         },
         stepButton: {
@@ -89,7 +89,7 @@ const i18n = new LocalizedStrings({
             no: 'Nein',
             cancel: 'Stornieren',
             confirm: 'Bestätigen',
-            edit: `Bevor Sie mit dem nächsten Schritt fortfahren, möchten Sie ändern "{0}" ?`
+            edit: `Bevor Sie mit dem nächsten Schritt fortfahren, möchten Sie ändern {0} ?`
         },
         inputNew: '[ {0} Titel]',
         optionChoose: 'wählen',
@@ -104,7 +104,7 @@ const i18n = new LocalizedStrings({
         },
         pageType: { layout: 'PageLayout', model: 'PageModel' },
         stepLabel: {
-            base: 'Vuoi basare la nuova pagina da {0} o "{1}"?',
+            base: 'Vuoi basare la nuova pagina da {0} o "{1}?',
             chooseCreate: 'Scelta o la creazione di un(e) {0}',
             createNew: 'Create a new {0}',
             back: 'Indietro un passo'
@@ -120,7 +120,7 @@ const i18n = new LocalizedStrings({
             no: 'No',
             cancel: 'Annulla',
             confirm: 'Conferma',
-            edit: `Prima di continuare al passaggio successivo, desideri modificare "{0}" ?`
+            edit: `Prima di continuare al passaggio successivo, desideri modificare {0} ?`
         },
         inputNew: '[{0} titolo]',
         optionChoose: 'scegliere',
@@ -136,7 +136,7 @@ const i18n = new LocalizedStrings({
         pageType: { layout: 'PageLayout', model: 'PageModel' },
         stepLabel: {
             base: 'Haluatko perustaa oman uuden sivua {0} tai {1}?',
-            chooseCreate: 'Valinnan tai luomisen "{0}"',
+            chooseCreate: 'Valinnan tai luomisen {0}',
             createNew: 'Luo {0}',
             back: 'Takaisin yksi aske'
         },
@@ -151,7 +151,7 @@ const i18n = new LocalizedStrings({
             no: 'Ei',
             cancel: 'Peruuta',
             confirm: 'Vahvista',
-            edit: `Ennen seuraavaan vaiheeseen, voisitteko muuttaa "{0}" ?`
+            edit: `Ennen seuraavaan vaiheeseen, voisitteko muuttaa {0} ?`
         },
         inputNew: '[{0} kuten]',
         optionChoose: 'kohdassa',
@@ -159,7 +159,7 @@ const i18n = new LocalizedStrings({
     },
     nl: {
         flow: {
-            base: 'Nieuwe Pagina Page Assistent',
+            base: 'Nieuwe Pagina Assistent',
             layout: 'Opmaak',
             model: 'Model',
             page: 'Pagina'
@@ -182,7 +182,7 @@ const i18n = new LocalizedStrings({
             no: 'Nee',
             cancel: 'Annuleer',
             confirm: 'Bevestig',
-            edit: `Voordat u verder gaat naar de volgende stap, wilt u "{0}" aanpassen?`
+            edit: `Voordat u verder gaat naar de volgende stap, wilt u {0} aanpassen?`
         },
         inputNew: '[{0} titel]',
         optionChoose: 'kies',
@@ -198,14 +198,14 @@ app_language is prior set by get_option. If not existing it returns get_user_loc
 try {
     if (npwi18n !== undefined) {
       i18n.setLanguage(npwi18n.lang);
-      console.log(`set "${npwi18n.lang}" from get_user_locale value`);
-      console.log('mpat-newpage-wizard is using locale: ' + i18n.getLanguage());
+      //console.log(`set "${npwi18n.lang}" from get_user_locale value`);
+      //console.log('mpat-newpage-wizard is using locale: ' + i18n.getLanguage());
     } else {
-      console.log('npwi18n not defined');
+      //console.log('npwi18n not defined');
     }
   }
   catch (err) {
-    console.log(err);
+    //console.log(err);
   }
   /*
   in case we have a i18n querystring, we override this
@@ -214,11 +214,12 @@ try {
     const i = document.location.search.split('i18n=');
     if (i.length > 1) {
       const j = i[1].split('&')[0];
-      console.log(`Forcing locale ${j} by querystring`);
+      //console.log(`Forcing locale ${j} by querystring`);
       i18n.setLanguage(j);
-      console.log('mpat-newpage-wizard is using locale: ' + i18n.getLanguage());   }
+      //console.log('mpat-newpage-wizard is using locale: ' + i18n.getLanguage());
+    }
   } catch (err) {
-    console.log(err);
+    //console.log(err);
   }
  
   module.exports = i18n;

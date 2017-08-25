@@ -272,7 +272,7 @@ class MpatNewPage extends React.PureComponent {
         }
       }, 250);
       const inner = (<div>
-        <h3>Editing {title} in other window...</h3>
+        <h3>Editing {title} in other window</h3>
         <small>If pop-up blocked try <a target="_manualOpen" onClick={() => { this.setState({ child: null }); }} href={getEditPostUrl(id)}>manually</a> opening in another window</small>
       </div>);
       this.setState({
@@ -406,7 +406,7 @@ class MpatNewPage extends React.PureComponent {
     let htmlSelect = null;
 
     if (this.state.stepTag !== 'base') {
-      htmlBackButton = getButton(i18n.stepLabel.back, this.goBack,this.state.stepTag !== 'done'? i18n.stepButton.back: i18n.stepButton.done);
+      htmlBackButton = getButton(i18n.stepLabel.back, this.goBack, this.state.stepTag !== 'done' ? i18n.stepButton.back : i18n.stepButton.done);
     }
 
     let inputPlaceholder = '';
