@@ -6,6 +6,8 @@
  * Version: 2.0.beta
  * Author: Jean-Philippe Ruijs
  * Author URI: https://github.com/jeanphilipperuijs/
+ * Text Domain: mpat-newpage-wizard
+ * Domain Path: /languages
  * License: GPL2
  */
  namespace MPAT\NewPageWizard;
@@ -14,9 +16,12 @@ class NewPage
 {
     function init()
     {
-        add_submenu_page('_doesntexist', 'Wizard', '', 'manage_options', 'MPAT_NewPageWizard', array(&$this, 'js'), 'dashicons-welcome-learn-more');
+        add_action( 'plugins_loaded', array(&$this,'load_l10n'));
+
+        add_submenu_page('_doesntexist', __('Wizard', 'mpat-newpage-wizard'), '', 'manage_options', 'MPAT_NewPageWizard', array(&$this, 'load_js'), 'dashicons-welcome-learn-more');
          
         if (isset($_GET['post_type']) && $_GET['post_type'] === 'page') {
+            echo '<!--'.__('Wizard', 'mpat-newpage-wizard').'-->';
             ?>
          <script>
              window.onload = function() {
@@ -31,7 +36,8 @@ class NewPage
             <?php
         }
     }
-    function js()
+
+    function load_js()
     {
         wp_enqueue_script('wp-api');
         wp_register_script('mpat_npw_i18n', null, array("wp-api"));
@@ -41,6 +47,11 @@ class NewPage
         ));
         wp_enqueue_script('mpat_npw_i18n');
         wp_enqueue_script('mpat-newpage-wizard', plugin_dir_url(__FILE__) . 'public/rui.js', array('wp-api'), 1.0, true );
+    }
+
+    function load_l10n()
+    {
+        load_plugin_textdomain( 'mpat-newpage-wizard', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
     }
 }
  
