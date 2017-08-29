@@ -12,11 +12,11 @@ export function onEnter(event, key, cb) {
 
 export const getEditPostUrl = id => `./post.php?post=${Number(id)}&action=edit`;
 
-export const getButton = (title, click, value =i18n.stepButton.next) => (<button title={title} onKeyUp={e => onEnter(e, 78, click)} onClick={click} key={getId()} id={getId()} className="button blue_white" style={{ cursor: 'pointer', margin: '0.5em' }} type="button">{value}</button>);
+export const getButton = (title, click, value = i18n.stepButton.next) => (<button title={title} onKeyUp={e => onEnter(e, 78, click)} onClick={click} key={getId()} id={getId()} className="button blue_white" style={{ cursor: 'pointer', margin: '0.5em' }} type="button">{value}</button>);
 
-export const getInputButton = (title, click, value =i18n.stepButton.next) => (<input title={title} onClick={click} value={value} key={getId()} id={getId()} className="button blue_white" style={{ cursor: 'pointer' }} type="button" />);
+export const getInputButton = (title, click, value = i18n.stepButton.next) => (<input title={title} onClick={click} value={value} key={getId()} id={getId()} className="button blue_white" style={{ cursor: 'pointer' }} type="button" />);
 
-export const getInput = (key, change, placeholder = '[input]') => <input type="text" key={key} onChange={change} placeholder={placeholder.toLocaleLowerCase()} style={{ margin: '0.5em'/*, width: '384px' */}} />;
+export const getInput = (key, change, placeholder = '[input]') => <input type="text" key={key} onChange={change} placeholder={placeholder.toLocaleLowerCase()} style={{ margin: '0.5em'/*, width: '384px' */ }} />;
 
 export const overlayConfirm = (inner, confirm, cancel) => {
   const y = confirm != null ? getButton(i18n.modal.confirm, confirm, i18n.modal.yes) : null;
