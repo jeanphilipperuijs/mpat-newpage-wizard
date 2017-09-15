@@ -22,7 +22,7 @@ class NewPage
         add_submenu_page('_doesntexist', __("Wizard", "mpat-newpage-wizard"), '', 'manage_options', 'MPAT_NewPageWizard', array(&$this, 'load_js'), 'dashicons-welcome-learn-more');
 
         add_option('mpatNewPageWizard', '');
-        register_setting('mpatNewPageWizard-settings-group', 'mpatNewPageWizard' );
+        register_setting('mpatNewPageWizard-settings-group', 'mpatNewPageWizard');
 
         if (isset($_GET['post_type']) && $_GET['post_type'] === 'page') {
             $replace ='';
@@ -39,7 +39,7 @@ class NewPage
                     let url ='./admin.php?page=MPAT_NewPageWizard';
                     if(mnpwReplaceAddNew == 0){
                         let addNew = document.getElementsByClassName('page-title-action')[0];
-                        addNew.innerText = '<?php _e("New Page Editor", "mpat-newpage-wizard"); ?>';
+                        addNew.innerText = '<?php _e("Wizard", "mpat-newpage-wizard"); ?>';
                         addNew.href=url;
                     }else{
                         let n = document.getElementsByClassName('wp-heading-inline')[0];
