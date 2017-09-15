@@ -5,24 +5,28 @@ msgstr ""
 "Project-Id-Version: MPAT New Page Wizard 2.0.beta\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/mpat-newpage-"
 "wizard\n"
-"POT-Creation-Date: 2017-08-24 09:52:09+00:00\n"
+"POT-Creation-Date: 2017-09-15 13:56+0200\n"
+"PO-Revision-Date: 2017-09-15 13:57+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-08-24 19:47+0200\n"
-"Language-Team: \n"
 "X-Generator: Poedit 1.8.11\n"
-"Last-Translator: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: nl_NL\n"
 
-#: NewPage.php:18 NewPage.php:32
+#: NewPage.php:22 NewPage.php:48
 msgid "Wizard"
 msgstr "Assistent"
 
-#: NewPage.php:26
+#: NewPage.php:42
 msgid "New Page Editor"
-msgstr "Nieuwe Pagina Editor"
+msgstr "Pagina Assistent"
+
+#: NewPage.php:79
+msgid "Replace the button 'Add New'"
+msgstr "Vervang de knop 'Nieuw pagina'"
 
 #. Plugin Name of the plugin/theme
 msgid "MPAT New Page Wizard"
@@ -43,3 +47,6 @@ msgstr ""
 #. Author URI of the plugin/theme
 msgid "https://github.com/jeanphilipperuijs/"
 msgstr ""
+
+#~ msgid "Replace with new page button"
+#~ msgstr "Vervang de 'nieuwe pagina' knop"
