@@ -69,7 +69,7 @@ class NewPage
         
         <div style="position:relative; left: 164px" >
         <details id="options">
-        <summary>Options</summary>
+        <summary><?php _e('Options'); ?></summary>
         <form method="post" action="./options.php">
         <?php settings_fields( 'mpatNewPageWizard-settings-group' ); ?>
         <?php do_settings_sections( 'mpatNewPageWizard-settings-group' ); ?>
