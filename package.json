@@ -27,7 +27,7 @@
     "es2015": "0.0.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-localization": "0.0.8",
+    "react-localization": "0.1.2",
     "webpack": "^2.7.0",
     "webpack-dev-server": "^1.16.5"
   }
