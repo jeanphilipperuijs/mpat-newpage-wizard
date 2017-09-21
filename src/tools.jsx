@@ -16,7 +16,16 @@ export const getButton = (title, click, value = i18n.stepButton.next) => (<butto
 
 export const getInputButton = (title, click, value = i18n.stepButton.next) => (<input title={title} onClick={click} value={value} key={getId()} id={getId()} className="button blue_white" style={{ cursor: 'pointer' }} type="button" />);
 
-export const getInput = (key, change, placeholder = '[input]') => <input type="text" key={key} onChange={change} placeholder={placeholder.toLocaleLowerCase()} style={{ margin: '0.5em'/*, width: '384px' */ }} />;
+export const getInput = (key, change, placeholder = '[input]') => {
+  let ph = placeholder;
+  //console.log(typeof (placeholder), placeholder);
+  // fix for sudden weird behaviour from react-localization
+  if (typeof (placeholder) === 'object') {
+    ph = placeholder.join('');
+  }
+
+  return (<input type="text" key={key} onChange={change} placeholder={ph} style={{ margin: '0.5em'/*, width: '384px' */ }} />);
+}
 
 export const overlayConfirm = (inner, confirm, cancel) => {
   const y = confirm != null ? getButton(i18n.modal.confirm, confirm, i18n.modal.yes) : null;
