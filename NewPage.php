@@ -103,8 +103,9 @@ class NewPage
             'locale' => get_user_locale()
         ));
         wp_enqueue_script('mpat_npw_i18n');
-        wp_enqueue_script('mpat-newpage-wizard', plugin_dir_url(__FILE__) . 'public/rui.js', array('wp-api'), 1.0, true );
-
+      //  wp_enqueue_script('mpat-newpage-wizard', plugin_dir_url(__FILE__) . 'public/rui.js', array('wp-api'), 1.0, true );
+      wp_enqueue_script('mpat-newpage-wizard', 'http://localhost:8000/rui.js', array('wp-api'), 1.0, true );
+      
     }
 }
  

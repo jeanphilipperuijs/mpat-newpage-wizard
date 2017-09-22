@@ -1,7 +1,7 @@
 
 import LocalizedStrings from 'react-localization';
 
-const i18n = new LocalizedStrings({
+const l10n = new LocalizedStrings({
     en: {
         flow: {
             base: 'New Page Wizard',
@@ -27,7 +27,7 @@ const i18n = new LocalizedStrings({
             no: 'No',
             cancel: 'Cancel',
             confirm: 'Confirm',
-            edit: `Before continuing to the next step, would you like to modify {0} ?`
+            edit: 'Before continuing to the next step, would you like to modify {0} ?'
         },
         inputNew: '[{0} title]',
         optionChoose: 'choose',
@@ -58,11 +58,11 @@ const i18n = new LocalizedStrings({
             no: 'Non',
             cancel: 'Annuler',
             confirm: 'Confirmer',
-            edit: `Avant de continuer à la prochaine étape, voulez-vous modifier <strong>{0}</strong> ?`
+            edit: 'Avant de continuer à la prochaine étape, voulez-vous modifier <strong>{0}</strong> ?'
         },
-        inputNew: '[titre de {0}]',
+        inputNew: 'Titre de',
         optionChoose: 'choisissez',
-        insertTitle: `Saisissez un titre pour {0} "{1}"`,
+        insertTitle: 'Saisissez un titre pour {0} "{1}"',
     },
     de: {
         flow: {
@@ -89,11 +89,11 @@ const i18n = new LocalizedStrings({
             no: 'Nein',
             cancel: 'Stornieren',
             confirm: 'Bestätigen',
-            edit: `Bevor Sie mit dem nächsten Schritt fortfahren, möchten Sie ändern {0} ?`
+            edit: 'Bevor Sie mit dem nächsten Schritt fortfahren, möchten Sie ändern {0}?'
         },
-        inputNew: '[ {0} Titel]',
+        inputNew: 'Titel',
         optionChoose: 'wählen',
-        insertTitle: `Wählen Sie einen Titel für {0} "{1}"`,
+        insertTitle: 'Wählen Sie einen Titel für {0} "{1}"',
     },
     it: {
         flow: {
@@ -104,7 +104,7 @@ const i18n = new LocalizedStrings({
         },
         pageType: { layout: 'PageLayout', model: 'PageModel' },
         stepLabel: {
-            base: 'Vuoi basare la nuova pagina da {0} o "{1}?',
+            base: 'Vuoi basare la nuova pagina da {0} o {1}?',
             chooseCreate: 'Scelta o la creazione di un(e) {0}',
             createNew: 'Create a new {0}',
             back: 'Indietro un passo'
@@ -120,9 +120,9 @@ const i18n = new LocalizedStrings({
             no: 'No',
             cancel: 'Annulla',
             confirm: 'Conferma',
-            edit: `Prima di continuare al passaggio successivo, desideri modificare {0} ?`
+            edit: 'Prima di continuare al passaggio successivo, desideri modificare {0} ?'
         },
-        inputNew: '[{0} titolo]',
+        inputNew: 'Titolo',
         optionChoose: 'scegliere',
         insertTitle: 'Scegli un titolo per {0} "{1}"',
     },
@@ -151,9 +151,9 @@ const i18n = new LocalizedStrings({
             no: 'Ei',
             cancel: 'Peruuta',
             confirm: 'Vahvista',
-            edit: `Ennen seuraavaan vaiheeseen, voisitteko muuttaa {0} ?`
+            edit: 'Ennen seuraavaan vaiheeseen, voisitteko muuttaa {0} ?'
         },
-        inputNew: '[{0} kuten]',
+        inputNew: 'Kuten ',
         optionChoose: 'kohdassa',
         insertTitle: 'Valitse otsikko {0} "{1}"',
     },
@@ -182,9 +182,9 @@ const i18n = new LocalizedStrings({
             no: 'Nee',
             cancel: 'Annuleer',
             confirm: 'Bevestig',
-            edit: `Voordat u verder gaat naar de volgende stap, wilt u {0} aanpassen?`
+            edit: 'Voordat u verder gaat naar de volgende stap, wilt u {0} aanpassen?'
         },
-        inputNew: '[{0} titel]',
+        inputNew: 'Titel nieuwe',
         optionChoose: 'kies',
         insertTitle: 'Kies een titel voor {0} "{1}"',
     }
@@ -197,30 +197,29 @@ app_language is prior set by get_option. If not existing it returns get_user_loc
 */
 try {
     if (npwi18n !== undefined) {
-      i18n.setLanguage(npwi18n.lang);
-      //console.log(`set "${npwi18n.lang}" from get_user_locale value`);
-      //console.log('mpat-newpage-wizard is using locale: ' + i18n.getLanguage());
+        l10n.setLanguage(npwi18n.lang);
+        //console.log(`set "${npwi18n.lang}" from get_user_locale value`);
+        console.log('mpat-newpage-wizard is using locale: ' + i18n.getLanguage());
     } else {
-      //console.log('npwi18n not defined');
+        console.log('npwi18n not defined');
     }
-  }
-  catch (err) {
+}
+catch (err) {
     //console.log(err);
-  }
-  /*
-  in case we have a i18n querystring, we override this
-  */
-  try {
+}
+/*
+in case we have a i18n querystring, we override this
+*/
+try {
     const i = document.location.search.split('i18n=');
     if (i.length > 1) {
-      const j = i[1].split('&')[0];
-      //console.log(`Forcing locale ${j} by querystring`);
-      i18n.setLanguage(j);
-      //console.log('mpat-newpage-wizard is using locale: ' + i18n.getLanguage());
+        const j = i[1].split('&')[0];
+        //console.log('Forcing locale ${j} by querystring');
+        l10n.setLanguage(j);
+        //console.log('mpat-newpage-wizard is using locale: ' + i18n.getLanguage());
     }
-  } catch (err) {
+} catch (err) {
     //console.log(err);
-  }
- 
-  module.exports = i18n;
-  
+}
+
+module.exports = l10n;
