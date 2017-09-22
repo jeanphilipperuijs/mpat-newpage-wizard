@@ -411,8 +411,14 @@ class MpatNewPage extends React.PureComponent {
     }
 
     let inputPlaceholder = '';
-    //inputPlaceholder = l10n.formatString(l10n.inputNew, l10n.flow[this.state.stepTag]);
-    inputPlaceholder = l10n.inputNew + " " + l10n.flow[this.state.stepTag];
+    try {
+      inputPlaceholder = l10n.formatString(l10n.inputNew, l10n.flow[this.state.stepTag]);
+    }
+    catch (err) {
+      //console.log(err);
+      //console.log(this.state.stepTag, l10n.inputNew, l10n.flow[this.state.stepTag]);
+      inputPlaceholder = l10n.inputNew + " " + l10n.flow[this.state.stepTag];
+    }
 
     switch (this.state.stepTag) {
       // First step

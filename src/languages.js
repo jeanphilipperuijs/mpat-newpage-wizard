@@ -29,7 +29,7 @@ const l10n = new LocalizedStrings({
             confirm: 'Confirm',
             edit: 'Before continuing to the next step, would you like to modify {0} ?'
         },
-        inputNew: '[{0} title]',
+        inputNew: '"{0}" title]',
         optionChoose: 'choose',
         insertTitle: 'Choose a title for {0} "{1}"',
     },
@@ -60,7 +60,7 @@ const l10n = new LocalizedStrings({
             confirm: 'Confirmer',
             edit: 'Avant de continuer à la prochaine étape, voulez-vous modifier <strong>{0}</strong> ?'
         },
-        inputNew: 'Titre de',
+        inputNew: 'Titre de "{0}"',
         optionChoose: 'choisissez',
         insertTitle: 'Saisissez un titre pour {0} "{1}"',
     },
@@ -76,7 +76,8 @@ const l10n = new LocalizedStrings({
             base: 'Wollen Sie Ihre neue Seite von {0} oder {1} gründen?',
             chooseCreate: 'Wahl oder die Schaffung von ein (e) {0}',
             createNew: 'Ein {0} kreieren',
-            back: 'Zurück einen Schritt'
+            back: 'Zurück einen Schritt',
+            done: 'Ende',
         },
         stepButton: {
             createPage: 'Erstellen und ändern',
@@ -91,7 +92,7 @@ const l10n = new LocalizedStrings({
             confirm: 'Bestätigen',
             edit: 'Bevor Sie mit dem nächsten Schritt fortfahren, möchten Sie ändern {0}?'
         },
-        inputNew: 'Titel',
+        inputNew: '"{0}" Titel',
         optionChoose: 'wählen',
         insertTitle: 'Wählen Sie einen Titel für {0} "{1}"',
     },
@@ -122,7 +123,7 @@ const l10n = new LocalizedStrings({
             confirm: 'Conferma',
             edit: 'Prima di continuare al passaggio successivo, desideri modificare {0} ?'
         },
-        inputNew: 'Titolo',
+        inputNew: '"{0}" Titolo',
         optionChoose: 'scegliere',
         insertTitle: 'Scegli un titolo per {0} "{1}"',
     },
@@ -131,18 +132,20 @@ const l10n = new LocalizedStrings({
             base: 'Sivulla Luontitoiminnon',
             layout: 'Kaavio',
             model: 'Malli',
-            page: 'Sivu'
+            page: 'Sivu',
+            done: 'Luo arvioita toisen',
         },
         pageType: { layout: 'PageLayout', model: 'PageModel' },
         stepLabel: {
             base: 'Haluatko perustaa oman uuden sivua {0} tai {1}?',
             chooseCreate: 'Valinnan tai luomisen {0}',
             createNew: 'Luo {0}',
-            back: 'Takaisin yksi aske'
+            back: 'Takaisin yksi aske',
+            done: 'Luo arvioita toisen',
+            
         },
         stepButton: {
             createPage: 'luominen ja muokkaaminen',
-            done: 'Luo arvioita toisen',
             next: 'seuraava',
             back: 'Takaisin'
         },
@@ -153,7 +156,7 @@ const l10n = new LocalizedStrings({
             confirm: 'Vahvista',
             edit: 'Ennen seuraavaan vaiheeseen, voisitteko muuttaa {0} ?'
         },
-        inputNew: 'Kuten ',
+        inputNew: 'Kuten "{0}"',
         optionChoose: 'kohdassa',
         insertTitle: 'Valitse otsikko {0} "{1}"',
     },
@@ -166,9 +169,9 @@ const l10n = new LocalizedStrings({
         },
         pageType: { layout: 'Pagina Opmaak', model: 'Pagina Model' },
         stepLabel: {
-            base: 'Moet uw nieuwe pagina gebaseerd zijn op een {0} of {1}?',
-            chooseCreate: 'Kies of maak een {0}',
-            createNew: 'Maak een nieuwe {0}',
+            base: 'Moet uw nieuwe pagina gebaseerd zijn op een "{0}" of "{1}"?',
+            chooseCreate: 'Kies of maak een "{0}" aan',
+            createNew: 'Maak een nieuwe "{0}" aan',
             back: 'Terug naar vorige'
         },
         stepButton: {
@@ -182,9 +185,9 @@ const l10n = new LocalizedStrings({
             no: 'Nee',
             cancel: 'Annuleer',
             confirm: 'Bevestig',
-            edit: 'Voordat u verder gaat naar de volgende stap, wilt u {0} aanpassen?'
+            edit: 'Voordat u verder gaat naar de volgende stap, wilt u "{0}" aanpassen?'
         },
-        inputNew: 'Titel nieuwe',
+        inputNew: 'Titel nieuwe "{0}"',
         optionChoose: 'kies',
         insertTitle: 'Kies een titel voor {0} "{1}"',
     }
