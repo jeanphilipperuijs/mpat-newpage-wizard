@@ -11,9 +11,9 @@ const l10n = new LocalizedStrings({
         },
         pageType: { layout: 'PageLayout', model: 'PageModel' },
         stepLabel: {
-            base: 'Should your new page be based on a {0} or {1}?',
-            chooseCreate: 'Choose or create a {0}',
-            createNew: 'Create a new {0}',
+            base: 'Should your new page be based on a "{0}" or "{1}"?',
+            chooseCreate: 'Choose or create a "{0}"',
+            createNew: 'Create a new "{0}"',
             back: 'Back to previous'
         },
         stepButton: {
@@ -27,9 +27,9 @@ const l10n = new LocalizedStrings({
             no: 'No',
             cancel: 'Cancel',
             confirm: 'Confirm',
-            edit: 'Before continuing to the next step, would you like to modify {0} ?'
+            edit: 'Before continuing to the next step, would you like to modify "{0}" ?'
         },
-        inputNew: '"{0}" title]',
+        inputNew: '"{0}" title',
         optionChoose: 'choose',
         insertTitle: 'Choose a title for {0} "{1}"',
     },
@@ -40,11 +40,11 @@ const l10n = new LocalizedStrings({
             model: 'Modèle',
             page: 'Page'
         },
-        pageType: { layout: 'PageLayout', model: 'PageModel' },
+        pageType: { layout: 'Mise en page', model:'Modèle' },
         stepLabel: {
-            base: 'Souhaitez-vous créer une page à partir d\'une {0} ou d\'un {1}?',
-            chooseCreate: 'Choix ou création de {0}',
-            createNew: 'Création de {0}',
+            base: 'Souhaitez-vous créer une page à partir d\'une "{0}" ou d\'un "{1}" ?',
+            chooseCreate: 'Choix ou création de "{0}"',
+            createNew: 'Création de "{0}"',
             back: 'Retour d\'une étape'
         },
         stepButton: {
@@ -58,7 +58,7 @@ const l10n = new LocalizedStrings({
             no: 'Non',
             cancel: 'Annuler',
             confirm: 'Confirmer',
-            edit: 'Avant de continuer à la prochaine étape, voulez-vous modifier <strong>{0}</strong> ?'
+            edit: 'Avant de continuer à la prochaine étape, voulez-vous modifier "{0}" ?'
         },
         inputNew: 'Titre de "{0}"',
         optionChoose: 'choisissez',
@@ -73,9 +73,9 @@ const l10n = new LocalizedStrings({
         },
         pageType: { layout: 'PageLayout', model: 'PageModel' },
         stepLabel: {
-            base: 'Wollen Sie Ihre neue Seite von {0} oder {1} gründen?',
-            chooseCreate: 'Wahl oder die Schaffung von ein (e) {0}',
-            createNew: 'Ein {0} kreieren',
+            base: 'Wollen Sie Ihre neue Seite von "{0}" oder "{1}" gründen?',
+            chooseCreate: 'Wahl oder die Schaffung von ein (e) "{0}"',
+            createNew: 'Ein "{0}" kreieren',
             back: 'Zurück einen Schritt',
             done: 'Ende',
         },
@@ -90,7 +90,7 @@ const l10n = new LocalizedStrings({
             no: 'Nein',
             cancel: 'Stornieren',
             confirm: 'Bestätigen',
-            edit: 'Bevor Sie mit dem nächsten Schritt fortfahren, möchten Sie ändern {0}?'
+            edit: 'Bevor Sie mit dem nächsten Schritt fortfahren, möchten Sie ändern "{0}"?'
         },
         inputNew: '"{0}" Titel',
         optionChoose: 'wählen',
@@ -105,9 +105,9 @@ const l10n = new LocalizedStrings({
         },
         pageType: { layout: 'PageLayout', model: 'PageModel' },
         stepLabel: {
-            base: 'Vuoi basare la nuova pagina da {0} o {1}?',
-            chooseCreate: 'Scelta o la creazione di un(e) {0}',
-            createNew: 'Create a new {0}',
+            base: 'Vuoi basare la nuova pagina da "{0}" o "{1}"?',
+            chooseCreate: 'Scelta o la creazione di un(e) "{0}"',
+            createNew: 'Create a new "{0}"',
             back: 'Indietro un passo'
         },
         stepButton: {
@@ -121,11 +121,11 @@ const l10n = new LocalizedStrings({
             no: 'No',
             cancel: 'Annulla',
             confirm: 'Conferma',
-            edit: 'Prima di continuare al passaggio successivo, desideri modificare {0} ?'
+            edit: 'Prima di continuare al passaggio successivo, desideri modificare "{0}"?'
         },
         inputNew: '"{0}" Titolo',
         optionChoose: 'scegliere',
-        insertTitle: 'Scegli un titolo per {0} "{1}"',
+        insertTitle: 'Scegli un titolo per "{0}" "{1}"',
     },
     fi: {
         flow: {
@@ -137,9 +137,9 @@ const l10n = new LocalizedStrings({
         },
         pageType: { layout: 'PageLayout', model: 'PageModel' },
         stepLabel: {
-            base: 'Haluatko perustaa oman uuden sivua {0} tai {1}?',
-            chooseCreate: 'Valinnan tai luomisen {0}',
-            createNew: 'Luo {0}',
+            base: 'Haluatko perustaa oman uuden sivua "{0}" tai "{1}"?',
+            chooseCreate: 'Valinnan tai luomisen "{0}"',
+            createNew: 'Luo "{0}"',
             back: 'Takaisin yksi aske',
             done: 'Luo arvioita toisen',
             
@@ -154,7 +154,7 @@ const l10n = new LocalizedStrings({
             no: 'Ei',
             cancel: 'Peruuta',
             confirm: 'Vahvista',
-            edit: 'Ennen seuraavaan vaiheeseen, voisitteko muuttaa {0} ?'
+            edit: 'Ennen seuraavaan vaiheeseen, voisitteko muuttaa "{0}" ?'
         },
         inputNew: 'Kuten "{0}"',
         optionChoose: 'kohdassa',
