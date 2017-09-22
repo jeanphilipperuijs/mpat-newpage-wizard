@@ -4,7 +4,7 @@ import l10n from './languages';
 export const getId = () => Math.random().toString(36).substr(3, 5);
 
 export function onEnter(event, key, cb) {
-  console.log(event.keyCode);
+  //console.log(event.keyCode);
   if (event.keyCode === key) {
     cb(event);
   }
@@ -27,7 +27,7 @@ export const getInput = (key, change, placeholder = '[input]') => {
     if (pht === 'object') {
       ph = placeholder.join('');
     }
-    console.log(pht, ph);
+    //console.log(pht, ph);
   } catch (err) { console.log('placeholder input', err); }
   return (<input type="text" key={key} onChange={change} placeholder={ph} style={{ margin: '0.5em'/*, width: '384px' */ }} />);
 }

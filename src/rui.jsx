@@ -259,7 +259,7 @@ class MpatNewPage extends React.PureComponent {
 
   waitForChildEdited(title, id) {
     const msgStr = l10n.formatString(l10n.modal.edit, title);
-    console.log(msgStr);
+    // console.log(msgStr);
     const confirmCB = () => {
       const openedChild = window.open(getEditPostUrl(id));
       this.childTimer = setInterval(() => {
@@ -396,7 +396,7 @@ class MpatNewPage extends React.PureComponent {
 
 
   render() {
-    console.log('state', this.state);
+    // console.log('state', this.state);
     /** render/display depends of current step and actions made.
      * two nested switch-case (one for the step, second for the type)
    */

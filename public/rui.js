@@ -10555,7 +10555,7 @@ var MpatNewPage = function (_React$PureComponent) {
       var _this7 = this;
 
       var msgStr = _languages2.default.formatString(_languages2.default.modal.edit, title);
-      console.log(msgStr);
+      // console.log(msgStr);
       var confirmCB = function confirmCB() {
         var openedChild = window.open((0, _tools.getEditPostUrl)(id));
         _this7.childTimer = setInterval(function () {
@@ -10732,7 +10732,7 @@ var MpatNewPage = function (_React$PureComponent) {
     value: function render() {
       var _this9 = this;
 
-      console.log('state', this.state);
+      // console.log('state', this.state);
       /** render/display depends of current step and actions made.
        * two nested switch-case (one for the step, second for the type)
       */
@@ -11892,7 +11892,7 @@ var getId = exports.getId = function getId() {
 };
 
 function onEnter(event, key, cb) {
-  console.log(event.keyCode);
+  //console.log(event.keyCode);
   if (event.keyCode === key) {
     cb(event);
   }
@@ -11930,7 +11930,7 @@ var getInput = exports.getInput = function getInput(key, change) {
     if (pht === 'object') {
       ph = placeholder.join('');
     }
-    console.log(pht, ph);
+    //console.log(pht, ph);
   } catch (err) {
     console.log('placeholder input', err);
   }
