@@ -10,7 +10,8 @@ const en = {
         base: 'Should your new page be based on a "{0}" or "{1}"?',
         chooseCreate: 'Choose or create a "{0}"',
         createNew: 'Create a new "{0}"',
-        back: 'Back to previous'
+        back: 'Back to previous',
+        done: 'Done'
     },
     stepButton: {
         createPage: 'create & edit',

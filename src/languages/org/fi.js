@@ -3,16 +3,14 @@ const fi = {
         base: 'Sivulla Luontitoiminnon',
         layout: 'Kaavio',
         model: 'Malli',
-        page: 'Sivu',
-        done: 'Luo arvioita toisen',
+        page: 'Sivu'
     },
     pageType: { layout: 'PageLayout', model: 'PageModel' },
     stepLabel: {
         base: 'Haluatko perustaa oman uuden sivua "{0}" tai "{1}"?',
         chooseCreate: 'Valinnan tai luomisen "{0}"',
         createNew: 'Luo "{0}"',
-        back: 'Takaisin yksi aske',
-        done: 'Luo arvioita toisen',
+        back: 'Takaisin yksi aske'
 
     },
     stepButton: {

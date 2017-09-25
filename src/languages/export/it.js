@@ -3,8 +3,7 @@ const it = {
     base: "Procedura guidata di creazione pagina",
     layout: "Schema",
     model: "Modello",
-    page: "Pagina",
-    done: "Luo arvioita toisen"
+    page: "Pagina"
   },
   pageType: {
     layout: "PageLayout",
@@ -15,7 +14,7 @@ const it = {
     chooseCreate: "Scelta o la creazione di un(e) \"{0}\"",
     createNew: "Create a new \"{0}\"",
     back: "Indietro un passo",
-    done: "Luo arvioita toisen"
+    done: "Done"
   },
   stepButton: {
     createPage: "crea e modifica",

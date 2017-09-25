@@ -1,7 +1,6 @@
 const nl = {
     flow: {
         base: 'Nieuwe Pagina Assistent',
-        layout: 'Opmaak',
         model: 'Model',
         page: 'Pagina'
     },

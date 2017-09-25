@@ -3,8 +3,7 @@ const fr = {
     base: "Assistant création de page",
     layout: "Mise en page",
     model: "Modèle",
-    page: "Page",
-    done: "Luo arvioita toisen"
+    page: "Page"
   },
   pageType: {
     layout: "Mise en page",
@@ -15,7 +14,7 @@ const fr = {
     chooseCreate: "Choix ou création de \"{0}\"",
     createNew: "Création de \"{0}\"",
     back: "Retour d'une étape",
-    done: "Luo arvioita toisen"
+    done: "Done"
   },
   stepButton: {
     createPage: "Créer & Modifier",

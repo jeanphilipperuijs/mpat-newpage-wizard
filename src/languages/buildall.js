@@ -6,36 +6,33 @@
  * @author Jean-Philippe Ruijs
  */
 const Merge2File = require('merge2file');
+const en = require('./org/en');
 const de = require('./org/de');
 const es = require('./org/es');
 const fi = require('./org/fi');
 const fr = require('./org/fr');
 const it = require('./org/it');
 const nl = require('./org/nl');
-const en = require('./org/en');
 
 const exportpath = './src/languages/export';
 
-let m = new Merge2File('de', de, en, exportpath);
-m.save();
-m=null;
+const org = JSON.stringify(en);
 
-m = new Merge2File('es', es, en, exportpath);
-m.save();
-m=null;
+let m1 = new Merge2File('de', de, JSON.parse(org), exportpath);
+m1.save();
 
-m = new Merge2File('fi', fi, en, exportpath);
-m.save();
-m=null;
+m2 = new Merge2File('es', es, JSON.parse(org), exportpath);
+m2.save();
 
-m = new Merge2File('fr', fr, en, exportpath);
-m.save();
-m=null;
+m3 = new Merge2File('fi', fi, JSON.parse(org), exportpath);
+m3.save();
 
-m = new Merge2File('it', it, en, exportpath);
-m.save();
-m=null;
+m4 = new Merge2File('fr', fr, JSON.parse(org), exportpath);
+m4.save();
 
-m = new Merge2File('nl', nl, en, exportpath);
-m.save();
+m5 = new Merge2File('it', it, JSON.parse(org), exportpath);
+m5.save();
+
+m6 = new Merge2File('nl', nl, JSON.parse(org), exportpath);
+m6.save();
 

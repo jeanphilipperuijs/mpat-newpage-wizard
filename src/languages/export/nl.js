@@ -1,10 +1,9 @@
 const nl = {
   flow: {
     base: "Nieuwe Pagina Assistent",
-    layout: "Opmaak",
+    layout: "Layout",
     model: "Model",
-    page: "Pagina",
-    done: "Luo arvioita toisen"
+    page: "Pagina"
   },
   pageType: {
     layout: "Pagina Opmaak",
@@ -15,7 +14,7 @@ const nl = {
     chooseCreate: "Kies of maak een \"{0}\" aan",
     createNew: "Maak een nieuwe \"{0}\" aan",
     back: "Terug naar vorige",
-    done: "Luo arvioita toisen"
+    done: "Done"
   },
   stepButton: {
     createPage: "Maak en bewerk",
