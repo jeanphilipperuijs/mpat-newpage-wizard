@@ -30,7 +30,7 @@ const es = {
     edit: "Antes de pasar al siguiente paso, ¿quiere \"{0}\" ?"
   },
   inputNew: "Encabezado \"{0}\"",
-  optionChoose: "elegir",
+  optionChoose: "Elegir",
   insertTitle: "Ingrese un título para {0} \"{1}\""
 };
 module.exports = es;
