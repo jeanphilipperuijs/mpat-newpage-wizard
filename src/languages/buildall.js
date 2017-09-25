@@ -5,7 +5,7 @@
  *
  * @author Jean-Philippe Ruijs
  */
-const Merge2File = require('merger');
+const Merge2File = require('merge2file');
 const de = require('./org/de');
 const es = require('./org/es');
 const fi = require('./org/fi');
@@ -13,7 +13,9 @@ const fr = require('./org/fr');
 const it = require('./org/it');
 const nl = require('./org/nl');
 const en = require('./org/en');
-const exportpath = '/home/jpruijs/git/mpat-newpage-wizard/src/languages/export';
+
+const exportpath = './src/languages/export';
+
 let m = new Merge2File('de', de, en, exportpath);
 m.save();
 m=null;

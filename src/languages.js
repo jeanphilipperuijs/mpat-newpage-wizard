@@ -11,6 +11,7 @@ import LocalizedStrings from 'react-localization';
 const l10n = new LocalizedStrings({
     en: en,
     fr: fr,
+    es: es,
     de: de,
     it: it,
     fi: fi,
