@@ -9,7 +9,8 @@ const nl = {
         base: 'Moet uw nieuwe pagina gebaseerd zijn op een "{0}" of "{1}"?',
         chooseCreate: 'Kies of maak een "{0}" aan',
         createNew: 'Maak een nieuwe "{0}" aan',
-        back: 'Terug naar vorige'
+        back: 'Terug naar vorige',
+        done: 'Einde'
     },
     stepButton: {
         createPage: 'Maak en bewerk',

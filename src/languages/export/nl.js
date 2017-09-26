@@ -14,7 +14,7 @@ const nl = {
     chooseCreate: "Kies of maak een \"{0}\" aan",
     createNew: "Maak een nieuwe \"{0}\" aan",
     back: "Terug naar vorige",
-    done: "Done"
+    done: "Einde"
   },
   stepButton: {
     createPage: "Maak en bewerk",

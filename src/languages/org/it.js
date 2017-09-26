@@ -10,7 +10,8 @@ const it = {
         base: 'Vuoi basare la nuova pagina da "{0}" o "{1}"?',
         chooseCreate: 'Scelta o la creazione di un(e) "{0}"',
         createNew: 'Create a new "{0}"',
-        back: 'Indietro un passo'
+        back: 'Indietro un passo',
+        done: 'Fine'
     },
     stepButton: {
         createPage: 'crea e modifica',

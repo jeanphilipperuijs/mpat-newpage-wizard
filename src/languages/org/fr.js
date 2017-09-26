@@ -10,7 +10,8 @@ const fr = {
         base: 'Souhaitez-vous créer une page à partir d\'une "{0}" ou d\'un "{1}" ?',
         chooseCreate: 'Choix ou création de "{0}"',
         createNew: 'Création de "{0}"',
-        back: 'Retour d\'une étape'
+        back: 'Retour d\'une étape',
+        done: 'Fin'
     },
     stepButton: {
         createPage: 'Créer & Modifier',

@@ -14,7 +14,7 @@ const it = {
     chooseCreate: "Scelta o la creazione di un(e) \"{0}\"",
     createNew: "Create a new \"{0}\"",
     back: "Indietro un passo",
-    done: "Done"
+    done: "Fine"
   },
   stepButton: {
     createPage: "crea e modifica",

@@ -14,7 +14,7 @@ const fr = {
     chooseCreate: "Choix ou création de \"{0}\"",
     createNew: "Création de \"{0}\"",
     back: "Retour d'une étape",
-    done: "Done"
+    done: "Fin"
   },
   stepButton: {
     createPage: "Créer & Modifier",
