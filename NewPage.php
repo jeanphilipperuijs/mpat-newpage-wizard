@@ -62,6 +62,7 @@ class NewPage
 
     function option_form(){
         $replace ='';
+        
         if(get_option('mpatNewPageWizard') =='on')
         {
             $replace='checked';
