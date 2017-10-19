@@ -22,7 +22,28 @@ class NewPage
         add_submenu_page('_doesntexist', __("Wizard", "mpat-newpage-wizard"), '', 'manage_options', 'MPAT_NewPageWizard', array(&$this, 'load_js'), 'dashicons-welcome-learn-more');
 
         add_option('mpatNewPageWizard', '');
-        register_setting('mpatNewPageWizard-settings-group', 'mpatNewPageWizard');
+		add_settings_section(  
+			'wizard_settings_section',
+			__('New Page Wizard', "mpat-newpage-wizad"),
+			function(){
+                _e('NewPage Wizard settings', "mpat-newpage-wizard");
+            },
+			'general'
+		);
+		add_settings_field(
+			'mpatNewPageWizard',
+			__('Remove "Add-Page" (show only the Wizard button)', "mpat-newpage-wizard"),
+			function($args){
+                $option = get_option($args[0],'');
+                $cmp = strcmp($option , "on");
+                $chk = ($cmp == 0) ? 'checked' : '';
+                echo '<input type="checkbox" id="'. $args[0] .'" name="'. $args[0] .'" '. $chk .' />';
+            },
+			'general',
+			'wizard_settings_section',
+			array('mpatNewPageWizard')  
+		); 
+        register_setting('general', 'mpatNewPageWizard','esc_attr');
 
         if (isset($_GET['post_type']) && $_GET['post_type'] === 'page') {
             $replace ='';
@@ -50,16 +71,17 @@ class NewPage
                         n.appendChild(wizard);
                     }
                 }catch(err){
-                    console.log('NewPageWizard', err);
+                    //console.log('NewPageWizard', err);
                 }
              }
          </script>
          <?php
 
-        $this->option_form();
+        //$this->option_form();
+        //moved to general settings
         }
     }
-
+/*
     function option_form(){
         $replace ='';
         
@@ -94,7 +116,7 @@ class NewPage
         </div>
         <?php
     }
-
+*/
     function load_js()
     {
         wp_enqueue_script('wp-api');
