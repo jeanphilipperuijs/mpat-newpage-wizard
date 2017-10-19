@@ -24,7 +24,7 @@ class NewPage
         add_option('mpatNewPageWizard', '');
 		add_settings_section(  
 			'wizard_settings_section',
-			__('New Page Wizard', "mpat-newpage-wizad"),
+			__('Wizard', "mpat-newpage-wizard"),
 			function(){
                 _e('NewPage Wizard settings', "mpat-newpage-wizard");
             },
