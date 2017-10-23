@@ -1,4 +1,14 @@
-import en from './languages/org/en';
+/**
+ * language determinator
+ * 
+ * 1. get_user_locale()
+ * 2. get_user_locale()
+ * 3. if query string i18n set, it overrides previous.
+ * 
+ * @author Jean-Philippe Ruijs
+ */
+
+ import en from './languages/org/en';
 import fr from './languages/export/fr';
 import es from './languages/export/es';
 import it from './languages/export/it';
@@ -42,9 +52,7 @@ try {
     const i = document.location.search.split('i18n=');
     if (i.length > 1) {
         const j = i[1].split('&')[0];
-        //console.log('Forcing locale ${j} by querystring');
         l10n.setLanguage(j);
-        //console.log('mpat-newpage-wizard is using locale: ' + i18n.getLanguage());
     }
 } catch (err) {
     //console.log(err);

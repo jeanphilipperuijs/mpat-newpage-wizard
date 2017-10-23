@@ -69,10 +69,14 @@ class MpatNewPage extends React.PureComponent {
       alert('wpApiSettings object not found!');
       this.setState({ errMsg: 'need WP API' });
     } else {
-      //this.setState({ errMsg: 'Detected WP API' });
-      this.modelIO = new CRUD(this.restUrlPageModel);
-      this.layoutIO = new CRUD(this.restUrlPageLayout);
-      this.pageIO = new CRUD(this.restUrlPage);
+      if (window.wpApiSettings.nonce !== undefined) {
+        //this.setState({ errMsg: 'Detected WP API' });
+        this.modelIO = new CRUD(this.restUrlPageModel);
+        this.layoutIO = new CRUD(this.restUrlPageLayout);
+        this.pageIO = new CRUD(this.restUrlPage);
+      } else {
+        this.setState({ errMsg: 'WP API nonce not set' });
+      }
     }
   }
 
