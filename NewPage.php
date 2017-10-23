@@ -10,9 +10,9 @@
  * Domain Path: /languages
  * License: GPL2
  */
- 
+
 namespace MPAT\NewPageWizard;
- 
+
 class NewPage
 {
     function init()
