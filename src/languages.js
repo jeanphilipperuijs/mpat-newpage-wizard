@@ -8,7 +8,7 @@
  * @author Jean-Philippe Ruijs
  */
 
- import en from './languages/org/en';
+import en from './languages/org/en';
 import fr from './languages/export/fr';
 import es from './languages/export/es';
 import it from './languages/export/it';
