@@ -1,4 +1,26 @@
 <?php
+/**
+ *
+ * Copyright (c) 2017 MPAT Consortium , All rights reserved.
+ * Fraunhofer FOKUS, Fincons Group, Telecom ParisTech, IRT, Lacaster University, Leadin, RBB, Mediaset
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library. If not, see <http://www.gnu.org/licenses/>.
+ *
+ * AUTHORS:
+ * Jean-Philippe Ruijs (jean-philippe@ruijs.fr)
+ *
+ **/
 /*
  * Plugin Name: MPAT New Page Wizard
  * Plugin URI: https://github.com/jeanphilipperuijs/mpat-newpage-wizard/
@@ -25,6 +47,7 @@ class NewPage
 
         /* configuration option 'mpatNewPageWizard' */
         add_option('mpatNewPageWizard', '');
+
         /* add this option to general settings overview */
 		add_settings_section(  
 			'wizard_settings_section',
@@ -41,11 +64,11 @@ class NewPage
                 $option = get_option($args[0],'');
                 $cmp = strcmp($option , "on");
                 $chk = ($cmp == 0) ? 'checked' : '';
-                echo '<input type="checkbox" id="'. $args[0] .'" name="'. $args[0] .'" '. $chk .' />';
+                echo '<input type="checkbox" id="'.$args[0].'" name="'.$args[0].'" '.$chk.' />';
             },
 			'general',
 			'wizard_settings_section',
-			array('mpatNewPageWizard')  
+			array('mpatNewPageWizard')
 		); 
         register_setting('general', 'mpatNewPageWizard','esc_attr');
 
